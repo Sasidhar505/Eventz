@@ -1,0 +1,33 @@
+{% extends 'events/main.html' %}
+{% load static %}
+
+{% block content %}
+<header id="main-header">
+    <h1>We got great events coming up!</h1>
+    <p>Find the one that best suits your interests!</p>
+    
+</header>
+<section>
+    <h2>Upcoming Events</h2>
+        <ol>
+            {% for event in events%}
+                <li class="meetup-item">
+                   <article>
+                       <div class="meetup-summary">
+                           <div class="meetup-image">
+                               <img src="{{ event.image.url }}" alt="">
+                           </div>
+                           <div class="meetup-details">
+                               <h3>{{ event.title}}</h3>
+                               <address>{{ event.location.name }}</address>
+                           </div>
+                       </div>
+                    <div class="meetup-actions">
+                        <a href="{% url 'event-details' event.slug %}" class="btn">More details</a>
+                    </div>
+                   </article> 
+                </li>
+            {% endfor %}
+        </ol>
+</section>
+{% endblock %}
