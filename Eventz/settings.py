@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hlzox(0w+z#2lme96$g0w$8nz#g+kn+glbw2w+-y7g@xd&v21e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['my-eventz.herokuapp.com','127.0.0.1','localhost','example.com' ]
 
