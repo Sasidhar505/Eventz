@@ -54,10 +54,10 @@ def logoutuser(request):
     data = {
         'logged_in':logged_in
     }
-    return redirect('login')
+    return redirect('events')
 
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def events(request):
     events = Event.objects.all()
     data = {'events':events}
@@ -87,7 +87,7 @@ def deregister_event(request , event_slug):
 
 
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def event_details(request , event_slug):
     selected_event = Event.objects.get(slug=event_slug)
     return render(request, 'events/event-details.html', {
