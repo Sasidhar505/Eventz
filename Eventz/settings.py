@@ -81,14 +81,9 @@ WSGI_APPLICATION = 'Eventz.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd6ddnvt3qeosmo',
-        'HOST': 'ec2-52-45-179-101.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'USER': 'crthiucvlnktnm',
-        'PASSWORD' : 'd0abe214efe77eb04dfba3c20487376d91476c797e9632f15592d9f1229b303b',
-
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
 
@@ -134,16 +129,16 @@ STATICFILES_DIR = [
 ]
 STATIC_ROOT =  os.path.join(BASE_DIR,'staticfiles')
 
-AWS_ACCESS_KEY_ID = 'AKIAWFNY7OE3QBQSXJSX'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'my-events-bucket'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
-PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
-DEFAULT_FILE_STORAGE = 'events.storage_backends.MediaStorage'
+# AWS_ACCESS_KEY_ID = 'AKIAWFNY7OE3QBQSXJSX'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'my-events-bucket'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+# AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+# PUBLIC_MEDIA_LOCATION = 'media'
+# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
+# DEFAULT_FILE_STORAGE = 'events.storage_backends.MediaStorage'
 
 
 
