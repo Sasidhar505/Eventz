@@ -21,7 +21,7 @@ class Event(models.Model):
     date = models.DateField()
     slug = models.SlugField(unique=True)
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='events/')
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     participants = models.ManyToManyField(Participant, blank=True, null=True)
 

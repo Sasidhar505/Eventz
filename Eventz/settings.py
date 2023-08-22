@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hlzox(0w+z#2lme96$g0w$8nz#g+kn+glbw2w+-y7g@xd&v21e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['my-eventz.herokuapp.com','127.0.0.1','localhost','example.com' ]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,13 +80,17 @@ WSGI_APPLICATION = 'Eventz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "mydatabase",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eventz',
+        'USER': 'eventz',
+        'PASSWORD': 'SaSi2910',
+        'HOST': 'eventz.cf4o1gigufdt.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -122,28 +126,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = 'https://myeventz.s3.amazonaws.com/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_ROOT =  os.path.join(BASE_DIR,'staticfiles')
-
-# AWS_ACCESS_KEY_ID = 'AKIAWFNY7OE3QBQSXJSX'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'my-events-bucket'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-# AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
-# PUBLIC_MEDIA_LOCATION = 'media'
-# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
-# DEFAULT_FILE_STORAGE = 'events.storage_backends.MediaStorage'
+MEDIA_URL = 'https://myeventz.s3.amazonaws.com/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static')
+AWS_ACCESS_KEY_ID = 'AKIA2TDMGYEZAFXCZG7I'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'myeventz'
+AWS_S3_SIGNATURE_NAME = 's3v4'
+AWS_S3_REGION_NAME = 'us-east-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
